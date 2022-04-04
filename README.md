@@ -1,5 +1,7 @@
 # Next.js + Tailwind CSS Example
 
+! Spotify API is more like a remote player than a dedicated one, so you need to have the Spotify app running in order for it to work.
+
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
 ## Deploy your own
