@@ -1,7 +1,5 @@
-import { Session } from 'inspector'
 import NextAuth, { Account } from 'next-auth'
-import { JWT } from 'next-auth/jwt'
-import SpotifyProvider from 'next-auth/providers/github'
+import SpotifyProvider from 'next-auth/providers/spotify'
 import spotifyApi, { LOGIN_URL } from '../../../common/spotify'
 
 const refreshAccessToken = async (token: any, account: Account | undefined) => {
@@ -32,8 +30,8 @@ const refreshAccessToken = async (token: any, account: Account | undefined) => {
 export default NextAuth({
   providers: [
     SpotifyProvider({
-      clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
-      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
+      clientId: process.env.NEXT_PUBLIC_CLIENT_ID!,
+      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET!,
       authorization: LOGIN_URL,
     }),
   ],
