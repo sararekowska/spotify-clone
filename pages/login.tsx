@@ -1,9 +1,9 @@
-import { getProviders } from 'next-auth/react'
+import { getProviders, signIn } from 'next-auth/react'
 import { GetServerSideProps } from 'next'
 
 const Login = ({ providers }: any) => {
   return (
-    <section>
+    <section className="flex min-h-screen w-full flex-col items-center justify-center bg-black">
       <img
         className="mb-5 w-52"
         src="https://links.papareact.com/9xl"
@@ -11,7 +11,12 @@ const Login = ({ providers }: any) => {
       />
       {Object.values(providers).map((provider: any) => (
         <div key={provider.name}>
-          <button>Login with: {provider.name}</button>
+          <button
+            className="rounded-lg bg-green-600 p-3 text-white"
+            onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+          >
+            Login with: {provider.name}
+          </button>
         </div>
       ))}
     </section>
