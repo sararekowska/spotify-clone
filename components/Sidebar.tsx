@@ -14,7 +14,7 @@ const Sidebar = () => {
   console.log(session, status)
 
   return (
-    <section className="border-r border-gray-900 p-5 text-gray-500">
+    <section className="h-screen overflow-y-scroll border-r border-gray-900 p-5 text-gray-500 scrollbar-hide ">
       <div className="space-y-3">
         <button className="flex items-center space-x-2 hover:text-white">
           <HomeIcon className="h-5 w-5" />

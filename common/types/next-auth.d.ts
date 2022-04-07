@@ -7,6 +7,8 @@ declare module 'next-auth' {
       accessToken?: string
       refreshToken?: string
       username?: string
+      image?: string
+      name?: string
     }
   }
   interface Account {
