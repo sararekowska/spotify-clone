@@ -105,7 +105,7 @@
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   "version" "0.16.2"
 
-"@types/spotify-api@*":
+"@types/spotify-api@*", "@types/spotify-api@^0.0.14":
   "integrity" "sha512-CxZsv+qHO0e0rfRKSKGpgQtDRBkam+kp0tCuo1t2HDW8dz2aU/AmR2/7ddIHfqdz9BW+wRQbadxkKhHXmZD/QA=="
   "resolved" "https://registry.npmjs.org/@types/spotify-api/-/spotify-api-0.0.14.tgz"
   "version" "0.0.14"

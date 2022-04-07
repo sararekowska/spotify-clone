@@ -1,3 +1,4 @@
+/// <reference path="../node_modules/@types/spotify-api/index.d.ts" />
 import {
   HomeIcon,
   SearchIcon,
@@ -8,10 +9,23 @@ import {
   LogoutIcon,
 } from '@heroicons/react/outline'
 import { signOut, useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+import { useSpotify } from '../common/hooks/useSpotify'
 
 const Sidebar = () => {
+  const spotifyApi = useSpotify()
   const { data: session, status } = useSession()
-  console.log(session, status)
+  const [playlists, setPlaylists] = useState<
+    SpotifyApi.PlaylistObjectSimplified[]
+  >([])
+
+  useEffect(() => {
+    if (spotifyApi.getAccessToken()) {
+      spotifyApi.getUserPlaylists().then((data) => {
+        setPlaylists(data.body.items)
+      })
+    }
+  }, [session, spotifyApi])
 
   return (
     <section className="h-screen overflow-y-scroll border-r border-gray-900 p-5 text-gray-500 scrollbar-hide ">
@@ -56,8 +70,11 @@ const Sidebar = () => {
 
         <hr className="border-t-[0.1px] border-gray-900" />
 
-        {/* playlists */}
-        <p className="cursor-pointer hover:text-white">Playlist name...</p>
+        {playlists.map((playlist) => (
+          <p key={playlist.id} className="cursor-pointer hover:text-white">
+            {playlist.name}
+          </p>
+        ))}
       </div>
     </section>
   )
