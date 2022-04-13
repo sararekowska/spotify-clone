@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
+import { getSession, GetSessionParams } from 'next-auth/react'
 import Head from 'next/head'
-import Image from 'next/image'
 import { Center } from '../components/Center'
 import Sidebar from '../components/Sidebar'
 
@@ -23,3 +23,13 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getServerSideProps = async (context: GetSessionParams) => {
+  const session = await getSession(context)
+
+  return {
+    props: {
+      session,
+    },
+  }
+}
