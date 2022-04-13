@@ -19,7 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/api/auth/[...nextauth].ts"
+    "pages/api/auth/[...nextauth].ts",
+    "atoms/playlistAtom.tsx"
   ],
   "exclude": ["node_modules"]
 }
