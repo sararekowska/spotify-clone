@@ -1,3 +1,5 @@
+import { useRecoilState } from 'recoil'
+import { currentTrackIdState, isPlayingState } from '../atoms/songAtom'
 import { useSpotify } from '../common/hooks/useSpotify'
 
 type Song = {
@@ -13,11 +15,25 @@ const msToMinutes = (millis: number) => {
 
 const Song = (props: Song) => {
   const spotifyApi = useSpotify()
+  const [currentTrackId, setCurrentTrackId] =
+    useRecoilState(currentTrackIdState)
+  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
   const ms = props.track.track.duration_ms
   const time = msToMinutes(ms)
 
+  const playSong = () => {
+    setCurrentTrackId(props.track.track.id)
+    setIsPlaying(true)
+    spotifyApi.play({
+      uris: [props.track.track.uri],
+    })
+  }
+
   return (
-    <section className="grid cursor-pointer grid-cols-2 rounded-lg py-2 px-3 text-gray-500 hover:bg-gray-900">
+    <section
+      className="grid cursor-pointer grid-cols-2 rounded-lg py-3 px-3 text-gray-500 hover:bg-gray-900"
+      onClick={playSong}
+    >
       <div className="flex items-center space-x-4">
         <p>{props.order + 1}</p>
         <img
