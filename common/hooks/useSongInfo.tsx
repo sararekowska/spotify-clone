@@ -3,10 +3,18 @@ import { useRecoilState } from 'recoil'
 import { currentTrackIdState } from '../../atoms/songAtom'
 import { useSpotify } from './useSpotify'
 
+type SongInfo = {
+  album: {
+    images: { url: string }[]
+  }
+  name: string
+  artists: { name: string }[]
+}
+
 const useSongInfo = () => {
   const spotifyApi = useSpotify()
   const [currentTrackId] = useRecoilState(currentTrackIdState)
-  const [songInfo, setSongInfo] = useState()
+  const [songInfo, setSongInfo] = useState<SongInfo>()
 
   useEffect(() => {
     const fetchSongInfo = async () => {
