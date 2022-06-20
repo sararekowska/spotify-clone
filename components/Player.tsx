@@ -21,7 +21,7 @@ const Player = () => {
         // console.log('now playing:', data.body.item)
         setCurrentTrackId(data.body?.item?.id || '')
         spotifyApi.getMyCurrentPlaybackState().then((data) => {
-          setIsPlaying(data.body.is_playing)
+          setIsPlaying(data.body?.is_playing)
         })
       })
     }
@@ -35,8 +35,8 @@ const Player = () => {
   }, [currentTrackIdState, spotifyApi, session])
 
   return (
-    <section className="h-24 bg-gradient-to-b from-black to-gray-900 text-white ">
-      <div>
+    <section className="grid h-24 grid-cols-3 bg-gradient-to-b from-black to-gray-900 px-2 text-xs text-white md:px-8 md:text-base">
+      <div className="flex items-center space-x-4">
         <img
           className="hidden h-10 w-10 md:inline"
           src={songInfo?.album.images?.[0]?.url}
