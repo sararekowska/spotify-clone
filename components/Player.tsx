@@ -1,3 +1,15 @@
+import {
+  SwitchHorizontalIcon,
+  VolumeUpIcon as VolueDownIcon,
+} from '@heroicons/react/outline'
+import {
+  RewindIcon,
+  PauseIcon,
+  PlayIcon,
+  FastForwardIcon,
+  ReplyIcon,
+  VolumeUpIcon,
+} from '@heroicons/react/solid'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -46,6 +58,29 @@ const Player = () => {
           <h3>{songInfo?.name}</h3>
           <p>{songInfo?.artists?.[0]?.name}</p>
         </div>
+      </div>
+
+      <div className="flex items-center justify-evenly">
+        <SwitchHorizontalIcon className="button" />
+        <RewindIcon
+          // skipping doesn't work, something wrong with the API?
+          onClick={() => spotifyApi.skipToPrevious()}
+          className="button"
+        />
+
+        {isPlaying ? (
+          <PauseIcon className="button h-10 w-10" />
+        ) : (
+          <PlayIcon className="button h-10 w-10" />
+        )}
+
+        <FastForwardIcon
+          // doesn't work
+          onClick={() => spotifyApi.skipToNext()}
+          className="button"
+        />
+
+        <ReplyIcon className="button" />
       </div>
     </section>
   )
