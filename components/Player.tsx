@@ -94,6 +94,12 @@ const Player = () => {
 
         <ReplyIcon className="button" />
       </div>
+
+      <div className="flex items-center justify-end space-x-3 md:space-x-4">
+        <VolueDownIcon className="button" />
+        <input type="range" min={0} max={100} />
+        <VolumeUpIcon className="button" />
+      </div>
     </section>
   )
 }
